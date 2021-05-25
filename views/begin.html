@@ -5,31 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户管理页面</title>
+    <title>后台管理页面</title>
     <link rel="stylesheet" href="./stylesheets/lol.css">
+    <link rel="stylesheet" href="/stylesheets/begin/common.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/begin/home.css"/>
     <script src="/javascripts/jquery.min.js"></script>
 </head>
-
 <body>
-
+    <div class="head fix">
+        <div class="t1 fix">
+            <div class="tl">后台管理页面</div>
+            <div class="tr">
+                <ul class="ur">
+                    <li><a href="/begin">用户管理</a></li>
+                    <li><a href="/begin2">日志管理</a></li>
+                    <li><a href="archive.html">用户详情</a></li>
+                    <li><a href="tags.html">评论管理</a></li>
+                    <li><a href="works.html">WORKS</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="tt">
+            <div class="t2">用户名单管理</div>
+        </div>
+    </div>
+<div>
     <div class="z">
         用户名:
         <input type="text" id="queryInput" class="queryInput"> 
-        <button class="departName" id="departName">查询</button>
-        <a href="#" id="qk" class="qk">清空</a>
-        
+        <button class="departName" id="departName">查询</button>     
     </div>
-
-    <div>
-        <ul class="dier">
-            <button class="add" id="margin" onclick="alert()">文本管理页面</button>
-        </ul>
-    </div>
-
     <div class="pa">
         <table border="1" class="biao" id="biao">
             <tr style="height: 50px">
-                <th>id</th>
                 <th>用户名</th>
                 <th>密码</th>
                 <th>注册时间</th>
@@ -39,7 +48,7 @@
                 <form  method="POST" action="/begin">
                     <% data.forEach((o,i)=>{%>
                         <tr>
-                                <td><%=o.id%></td>
+                                
                                 <td><%=o.regname%></td>
                                 <td><%=o.regpass%></td>
                                 <td><%=o.create_time%></td>
@@ -55,7 +64,7 @@
             </tr>
         </table>
     </div>
-    <!-- <script src="/javascripts/lol.js"> -->
+  </div>
     
     </script>
     <script src="/javascripts/test.js"></script>

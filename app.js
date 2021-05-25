@@ -7,7 +7,8 @@ var ejs = require('ejs');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
-var beginRouter = require('./routes/begin')
+var beginRouter = require('./routes/begin');
+ var begin2Router = require('./routes/begin2');
 
 
 
@@ -26,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use("/login",loginRouter);
-app.use('/begin',beginRouter)
+app.use('/begin',beginRouter);
+ app.use('/begin2',begin2Router);
 
 
 // catch 404 and forward to error handler

@@ -9,7 +9,6 @@ $(function (){
               data.map(o =>
               `
               <tr>
-              <td>${o.id}</td>
               <td>${ o.regname}</td>
               <td>${ o.regpass}</td>
               <td>${ o.create_time}</td>

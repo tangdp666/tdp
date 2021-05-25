@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改页面</title>
+</head>
+<body>
+<form action="/begin2/update" method="post">
+    <input type="hidden" value="{{datas[0].id}}" name="id">
+    作者：<input type="text" name="name" value="{{datas[0].writer}}"><br>
+    文本内容：<input type="text" name="age" value="{{datas[0].txt}}"><br>
+    创作时间：<input type="text" name="name" value="{{datas[0].create_time}}"><br>
+    评论内容：<input type="text" name="name" value="{{datas[0].comment}}"><br>
+    <input type="submit" value="提交">
+    </form>
+</body>
+</html>
+
