@@ -1,18 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>修改页面</title>
-</head>
-<body>
-<form action="/begin2/update" method="post">
-    <input type="hidden" value="{{datas[0].id}}" name="id">
-    作者：<input type="text" name="name" value="{{datas[0].writer}}"><br>
-    文本内容：<input type="text" name="age" value="{{datas[0].txt}}"><br>
-    创作时间：<input type="text" name="name" value="{{datas[0].create_time}}"><br>
-    评论内容：<input type="text" name="name" value="{{datas[0].comment}}"><br>
-    <input type="submit" value="提交">
-    </form>
-</body>
-</html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+			<link rel="stylesheet" href="/stylesheets/css1/amazeui.min.css">
+		<link rel="stylesheet" href="/stylesheets/css1/admin.css">
+		<link rel="stylesheet" href="/stylesheets/css1/app.css">
+		<script src="/javascripts/jquery.min.js"></script>	
+		<style>
+			.admin-main{
+				padding-top: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="am-cf admin-main">
+			<!-- content start -->
+			<div class="admin-content">
+				<div class="admin-content-body">
+					<div class="am-g">
+                        <% data.forEach(i=>{%>
+						<form class="am-form am-form-horizontal" action="/begin2/update/<%= i.id%>" method="post" onsubmit="return chexk()" style="padding-top: 30px;">
+							<input value="504" name="roleId" type="hidden">
+							<div class="am-form-group">
+								<label for="user-name" class="am-u-sm-3 am-form-label">
+									作者
+								</label>
+								<div class="am-u-sm-9">
+									<input  rows="" cols="50" required="" placeholder="请输入作者" value="<%= i.writer%>" name="goodName" type="text">
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="user-name" class="am-u-sm-3 am-form-label">
+									文本内容
+								</label>
+								<div class="am-u-sm-9">
+									<input rows="" cols="50"  value="<%= i.txt%>" placeholder="" name="goodPlace"></input>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="user-name" class="am-u-sm-3 am-form-label">
+									创作时间
+								</label>
+								<div class="am-u-sm-9">
+									<input rows="" value="<%= i.create_time%>" cols="50" placeholder="" name="goodOri_price"></input>
+								</div>
+							</div>
+							<div class="am-form-group">
+								<label for="user-name"  class="am-u-sm-3 am-form-label">
+									评论
+								</label>
+								<div class="am-u-sm-9">
+									<input rows="" cols="50" value="<%= i.comment%>" placeholder="" name="price"></input>
+								</div>
+							</div>
+							
 
+							<div class="am-form-group">
+								<div class="am-u-sm-9 am-u-sm-push-3">
+									<input id="addRole"  class="am-btn  insert am-btn-success  am-btn" value="提交"   type="submit">
+								</div>
+							</div>
+						</form>
+                        <%})%>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</body>
+	<script type="text/javascript" src="/javascripts/test.js"></script>
+	<script>
+		function chexk(){
+			alert('修改成功')
+		    return true;
+		}
+	</script>
+</html>

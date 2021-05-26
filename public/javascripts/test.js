@@ -43,7 +43,7 @@ $(function (){
 
 Array.from(document.getElementsByClassName('update')).forEach(i=>{
     i.onclick =function(){
-        let ind = this.getAttribute('data-id1')
-        window.location.href='/begin/upd/'+ind
+        let ind = this.getAttribute('data-id')
+        window.location.href='/begin2/upd/'+ind
     }
 })

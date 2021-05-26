@@ -32,6 +32,7 @@ router.post("/:massage",function(req, res) {
        res.send(results)
     });
   })
+  
 router.delete('/del/:id', (req, res) => {
     let sql = `DELETE FROM tab_login WHERE id = ${req.params.id}`
     connection.query(sql, (err, results) => {

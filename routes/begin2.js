@@ -8,6 +8,8 @@ let connection = mysql.createConnection({
     password:"123456",
     database:"node_2"
 });
+
+connection.connect()
 router.get('/', function(req, res, next) { 
   
   connection.query("select * from tab_log_txt ",function(err, results){
@@ -17,45 +19,35 @@ router.get('/', function(req, res, next) {
   });
 
   });
-  router.get('/toUpdate/:id', function (req, res) {
-    var id = req.params.id;
-    console.log(id)
-    pool.getConnection(function (err, connection) {
-        connection.query("select * from tab_log_txt where id=" + id, function (err, results) {
-            console.log(results)
-            if (err) {
-                res.end('修改页面跳转失败:' + err);
-            } else {
-                res.render('update', {data:results}); //直接跳转
-            }
-            connection.release();
+router.post('/update/:id',(req,res) =>{
+  let user ={
+    'writer': req.body.writer,
+    'txt': req.body.txt,
+    'create_time': req.body.create_time,
+    'comment': req.body.comment
+  }
+  let sqlStr = `delete from tab_log_txt where id = ${req.params.id}`
+  connection.query(sqlStr,(err,results) =>{
+    if (err) throw err
+    console.log(results)
+  
+  let sqlStr1 = `insert into tab_log_txt (id,writer,txt,comment) values ('${req.params.id}','${req.body.goodName}','${req.body.goodOri_price}','${req.body.price}')`
+    connection.query(sqlStr1,(err,results) =>{
+      if (err) throw err
+      console.log(results)
+      res.redirect('/begin2')
+    })
+})
+})
 
-        });
-    });
+router.get('/upd/:id',(req,res) =>{
+  let id = req.params.id
+  connection.query(`select * from tab_log_txt where id = ${id} `,function(err, results){
+    console.log(err);
+   console.log(results);
+   res.render('updeta',{data:results})
 });
-router.post('/update', function (req, res) {
-   var id = req.body.id;
-   var writer = req.body.writer;
-   var txt = req.body.txt;
-   var create_time = req.body.create_time;
-   var comment = req.body.comment;
-    console.log(id)
-    console.log(writer)
-    console.log(txt)
-    console.log(create_time)
-    console.log(comment)
-    pool.getConnection(function (err, connection) {
-        connection.query("update tab_log_txt set writer ='" + writer + "',txt='" + txt + "',create_time='" + create_time + "',comment='" + comment + "' where id=" + id, function (err, rows) {
-          if (err) {
-            res.end('修改失败:' + err);
-        } else {
-            res.redirect('/begin2');
-        }
-        connection.release();
-    });
-});
-});
-
+})
 
 
 module.exports = router;
